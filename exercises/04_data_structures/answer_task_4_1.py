@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Задание 4.6
+Задание 4.1
 
-Обработать строку ospf_route и вывести информацию на стандартный поток вывода в виде:
-Prefix                10.0.24.0/24
-AD/Metric             110/41
-Next-Hop              10.0.13.3
-Last update           3d18h
-Outbound Interface    FastEthernet0/0
+Используя подготовленную строку nat, получить новую строку, в которой в имени
+интерфейса вместо FastEthernet написано GigabitEthernet.
+Полученную новую строку вывести на стандартный поток вывода (stdout) с помощью print.
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
@@ -15,13 +12,10 @@ Outbound Interface    FastEthernet0/0
 без получения результатов из исходных данных с помощью Python.
 Это не значит, что задание сделано правильно, просто на данном этапе сложно иначе
 проверять результат.
+
 """
 
-ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
-a,b,c,d,e,f = ospf_route.split()
-print(f'''
-Prefix                {a}
-AD/Metric             {b[1:-1]}
-Next-Hop              {d[0:-1]}
-Last update           {e[0:-1]}
-Outbound Interface    {f}''')
+nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+
+nat_gig = nat.replace("Fast", "Gigabit")
+print(nat_gig)

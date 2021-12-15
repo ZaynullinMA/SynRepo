@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Задание 4.6
+Задание 4.7
 
-Обработать строку ospf_route и вывести информацию на стандартный поток вывода в виде:
-Prefix                10.0.24.0/24
-AD/Metric             110/41
-Next-Hop              10.0.13.3
-Last update           3d18h
-Outbound Interface    FastEthernet0/0
+Преобразовать MAC-адрес в строке mac в двоичную строку такого вида:
+'101010101010101010111011101110111100110011001100'
+
+Полученную новую строку вывести на стандартный поток вывода (stdout) с помощью print.
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
@@ -17,11 +15,7 @@ Outbound Interface    FastEthernet0/0
 проверять результат.
 """
 
-ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
-a,b,c,d,e,f = ospf_route.split()
-print(f'''
-Prefix                {a}
-AD/Metric             {b[1:-1]}
-Next-Hop              {d[0:-1]}
-Last update           {e[0:-1]}
-Outbound Interface    {f}''')
+mac = "AAAA:BBBB:CCCC"
+
+bin_mac = "{:b}".format(int(mac.replace(":", ""), 16))
+print(bin_mac)
