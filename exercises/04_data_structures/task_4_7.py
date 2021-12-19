@@ -16,5 +16,5 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
-result = bin(int(''.join(mac.split(':')), 16))[2:]
+result = bin(int((mac.replace(':','')), 16))[2:]
 print(result)
