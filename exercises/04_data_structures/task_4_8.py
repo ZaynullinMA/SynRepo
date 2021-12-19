@@ -27,10 +27,6 @@
 
 ip = "192.168.3.1"
 oct1,oct2,oct3,oct4 = ip.split('.')
-oct1 = int(oct1)
-oct2 = int(oct2)
-oct3 = int(oct3)
-oct4 = int(oct4)
 print(f'''
-{oct1:<10}{oct2:<10}{oct3:<10}{oct4:<10}
-{oct1:08b}  {oct2:08b}  {oct3:08b}  {oct4:08b}''')
+{int(oct1):<10}{int(oct2):<10}{int(oct3):<10}{int(oct4):<10}
+{int(oct1):08b}  {int(oct2):08b}  {int(oct3):08b}  {int(oct4):08b}''')
