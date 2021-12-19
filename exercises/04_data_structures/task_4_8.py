@@ -34,4 +34,3 @@ oct4 = int(oct4)
 print(f'''
 {oct1:<8} {oct2:<8} {oct3:<8} {oct4:<8}
 {oct1:08b}  {oct2:08b}  {oct3:08b}  {oct4:08b}''')
-test
