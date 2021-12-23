@@ -50,3 +50,9 @@ london_co = {
         "routing": True,
     },
 }
+
+from sys import argv
+name = input("Введите имя устройства: ")
+keys = ' '.join(list(london_co[name].keys()))
+name2 = input(f"Введите имя параметра ({keys}): ")
+print(london_co[name][name2])
