@@ -46,3 +46,7 @@ london_co = {
         "routing": True,
     },
 }
+
+from sys import argv
+perem = input("print r1, r2 or sw1: ")
+print(london_co[perem])
