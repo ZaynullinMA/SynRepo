@@ -52,6 +52,6 @@ london_co = {
 
 from sys import argv
 name = input("Введите имя устройства: ")
-keys = ' '.join(list(london_co[name].keys()))
+keys = ','.join(list(london_co[name].keys()))
 name2 = input(f"Введите имя параметра ({keys}): ")
-print(london_co.get[name][name2])
+print(london_co[name].get(name2, 'Такого параметра нет'))

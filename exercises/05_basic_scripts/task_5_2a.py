@@ -49,3 +49,23 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+from sys import argv
+input1 = input("Введите IP-сети: ")
+octets = (input1.replace('/', '.')).split('.')
+mask_bin = list("1" * int(octets[4]) + "0" * (32-int(octets[4])))
+mask_bin.insert(8, '.')
+mask_bin.insert(17, '.')
+mask_bin.insert(26, '.')
+mask_bin = (''.join(mask_bin)).split('.')
+octets = octets + mask_bin
+
+output = """Network:
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+
+Mask:
+/{4:<}
+{5:<10}{6:<10}{7:<10}{8:<10}
+{5:08b}  {6:08b}  {7:08b}  {8:08b}"""
+
+print(output.format(int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3]), int(octets[4]), int(octets[5],2), int(octets[6],2), int(octets[7],2), int(octets[8],2)))
