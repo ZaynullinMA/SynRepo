@@ -64,7 +64,6 @@ trunk_template = [
     "switchport trunk allowed vlan {}",
 ]
 
-from sys import argv
 
 access_template = '\n'.join(access_template)
 trunk_template = '\n'.join(trunk_template)

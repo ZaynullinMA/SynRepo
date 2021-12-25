@@ -47,6 +47,5 @@ london_co = {
     },
 }
 
-from sys import argv
 perem = input("Введите имя устройства: ")
 print(london_co[perem])

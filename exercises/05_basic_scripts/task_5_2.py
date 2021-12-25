@@ -31,7 +31,6 @@ Out[1]: '11111111111111111111111111110000'
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
-from sys import argv
 input1 = input("Введите IP-сети: ")
 octets = (input1.replace('/', '.')).split('.')
 mask_bin = list("1" * int(octets[4]) + "0" * (32-int(octets[4])))
