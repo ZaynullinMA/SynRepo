@@ -49,16 +49,6 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-from sys import argv
-input1 = input("Введите IP-сети: ")
-octets = (input1.replace('/', '.')).split('.')
-mask_bin = list("1" * int(octets[4]) + "0" * (32-int(octets[4])))
-mask_bin.insert(8, '.')
-mask_bin.insert(17, '.')
-mask_bin.insert(26, '.')
-mask_bin = (''.join(mask_bin)).split('.')
-octets = octets + mask_bin
-
 output = """Network:
 {0:<10}{1:<10}{2:<10}{3:<10}
 {0:08b}  {1:08b}  {2:08b}  {3:08b}
@@ -68,4 +58,27 @@ Mask:
 {5:<10}{6:<10}{7:<10}{8:<10}
 {5:08b}  {6:08b}  {7:08b}  {8:08b}"""
 
-print(output.format(int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3]), int(octets[4]), int(octets[5],2), int(octets[6],2), int(octets[7],2), int(octets[8],2)))
+from sys import argv
+input1 = input("Введите IP-сети: ")
+octets = (input1.replace('/', '.')).split('.')
+
+mask_bin = list("1" * int(octets[4]) + "0" * (32-int(octets[4])))
+mask_bin.insert(-8, '.')
+mask_bin.insert(-17, '.')
+mask_bin.insert(-26, '.')
+mask_bin = (''.join(mask_bin)).split('.')
+
+host_bin = bin(int(octets[0])*2**24 + int(octets[1])*2**16 + int(octets[2])*2**8 + int(octets[3]))
+host_bin = host_bin[2:]
+temp1 = 32-len(host_bin)
+host_bin = '0'*temp1 + host_bin
+
+network_bin = host_bin[:int(octets[4])]
+temp = '0'*(32-int(octets[4]))
+network_bin = list(network_bin + temp)
+network_bin.insert(-8, '.')
+network_bin.insert(-17, '.')
+network_bin.insert(-26, '.')
+network_bin = (''.join(network_bin)).split('.')
+
+print(output.format(int(network_bin[0],2), int(network_bin[1],2), int(network_bin[2],2), int(network_bin[3],2), int(octets[4]), int(mask_bin[0],2), int(mask_bin[1],2), int(mask_bin[2],2), int(mask_bin[3],2)))
